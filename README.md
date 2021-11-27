@@ -1,2 +1,2 @@
-# learningGo
-I will try to learn a new langauge which is `GO `.
+# learningAnotherLanguages
+I will try to learn another langauges 
