@@ -1,39 +1,16 @@
 package main
 
 import (
-    "bufio"
-    "fmt"
-    "os"
-    "encoding/json"
-    "net/http"
-    "io/ioutil"
+   "encoding/json"
+   "fmt"
+   "net/http"
 )
-type insults struct {
-  insult int `json:"insult"`
-  }
 func main() {
-  resp, err := http.Get("https://insult.mattbas.org/api/insult.json")
-  if err != nil { 
-    fmt.Print(err)
-    return
-  }
-  body, err := ioutil.ReadAll(resp.Body)
-  if err != nil {
-    fmt.Println(err)
-    return
-   }
-   textBytes := []byte(body)
-   data := insults{}
-   evrr := json.Unmarshal(textBytes, &data)
-   if evrr != nil {
-     fmt.Println(err)
-     return
-	}
-  reader := bufio.NewReader(os.Stdin)
-  fmt.Print("Enter username: ")
-  username, _ := reader.ReadString('\n')
-  reponse := username + "," + string(data.insult)
-  fmt.Println(reponse)
-
+  resp, _ := http.Get("https://insult.mattbas.org/api/insult.json")
+  var result map[string]interface{}
+  json.NewDecoder(resp.Body).Decode(&result)
+  fmt.Println("Enter a random name: ")
+  var username string
+  fmt.Scanln(&username)
+  fmt.Println("Listen Here",username +",",result["insult"])
 }
-//Not working help!
