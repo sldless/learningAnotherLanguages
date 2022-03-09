@@ -5,8 +5,9 @@
 using namespace std;
 int main()
 {
-    int number, guess, guessLeft;
+    int number, guess, guessLeft; //define the variables
     guessLeft = 5;
+    
     srand(time(NULL));
     for(int i=0;i<1;i++)
       number = rand() % 100 + 1;  
@@ -14,7 +15,7 @@ int main()
     std::cin >> guess;
     while(guess != number && guessLeft > 1)
     {
-        if(guess < number)
+        if(guess < number) //checks
         {
             std::cout << "Your guess is lower than the number" << std::endl;
         }
@@ -24,9 +25,9 @@ int main()
         }
         guessLeft--;
         std::cout << "You have " << guessLeft << " guesses left" << std::endl;
-        std::cin >> guess;
+        std::cin >> guess; //Gets the value of the guess
     }
-    if (guess == number)
+    if (guess == number) 
     {
         std::cout << "You got the correct number,  congrats!" << std::endl;
     }
@@ -36,6 +37,6 @@ int main()
         printf("The number was %d\n", number);
     }
 
-    return 0 ;
+    return 0;
 }
 
